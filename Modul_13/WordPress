@@ -9,6 +9,13 @@ Please note: You need to set your own name for app and MySQL. Also kindly note t
 
 You could do whole set up in console for git.
 
+Remember: 
+
+"Unless you try to do something beyond what
+you have already mastered, you will never grow"
+– Ralph Waldo Emerson, 1803-1882, författare & filosof
+
+
 ################################# create directory for project and change to that directory  #####################################
 mkdir wordpress
 
