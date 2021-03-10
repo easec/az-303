@@ -17,6 +17,7 @@ you have already mastered, you will never grow"
 
 
 ################################# create directory for project and change to that directory  #####################################
+
 mkdir wordpress
 
 cd wordpress
