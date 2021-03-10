@@ -66,6 +66,6 @@ az webapp config appsettings set --resource-group wordpressrg --name wpazureease
 
 az webapp config container set --resource-group wordpressrg --name wpazureeasec --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
 
-################################# remove your resources after testing  #####################################
+################################# clean up your resources after testing  #####################################
 
 az group delete --name wordpressrg
