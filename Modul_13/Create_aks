@@ -124,7 +124,7 @@ kubectl scale deployment my-app --replicas=1
 
 kubectl delete deployment my-app
 
-kubectl delete svc min-app
+kubectl delete svc my-app
 
 ########################## destroy cluster  ########################
 
