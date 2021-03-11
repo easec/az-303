@@ -1,0 +1,85 @@
+
+"Whatever you think you can do, begin it.
+ Action has magic, grace and power in it"
+– Goethe
+
+
+Cloud Shell
+
+########################## assign Bash variables  ########################
+
+REGION_NAME=northeurope
+RESOURCE_GROUP=aksworkshop
+SUBNET_NAME=aks-subnet
+VNET_NAME=aks-vnet
+
+########################## create new resource group  ########################
+
+az group create \
+ --name $RESOURCE_GROUP \
+ --location $REGION_NAME
+
+########################## create virtual network  ########################
+
+az network vnet create \
+ --resource-group $RESOURCE_GROUP \
+ --location $REGION_NAME \
+ --name $VNET_NAME \
+ --address-prefixes 10.0.0.0/8 \
+ --subnet-name $SUBNET_NAME \
+ --subnet-prefix 10.240.0.0/16
+
+########################## get and store subnet ID in a Bash variable  ########################
+
+SUBNET_ID=$(az network vnet subnet show \
+ --resource-group $RESOURCE_GROUP \
+ --vnet-name $VNET_NAME \
+ --name $SUBNET_NAME \
+ --query id -o tsv)
+
+########################## get the latest, non-preview, Kubernetes version and store it in a Bash variable  ########################
+
+VERSION=$(az aks get-versions \
+--location $REGION_NAME \
+--query 'orchestrators[?!isPreview] | [-1].orchestratorVersion' \
+--output tsv)
+
+########################## create a random name for cluster and it in a Bash variable  ########################
+
+AKS_CLUSTER_NAME=aksworkshop-$RANDOM
+
+########################## show name  ########################
+
+echo $AKS_CLUSTER_NAME
+
+########################## create cluster  ########################
+
+az aks create \
+--resource-group $RESOURCE_GROUP \
+--name $AKS_CLUSTER_NAME \
+--vm-set-type VirtualMachineScaleSets \
+--load-balancer-sku standard \
+--location $REGION_NAME \
+--kubernetes-version $VERSION \
+--network-plugin azure \
+--vnet-subnet-id $SUBNET_ID \
+--service-cidr 10.2.0.0/24 \
+--dns-service-ip 10.2.0.10 \
+--docker-bridge-address 172.17.0.1/16 \
+--generate-ssh-keys
+
+########################## test cluster connectivity  ########################
+
+az aks get-credentials \
+ --resource-group $RESOURCE_GROUP \
+ --name $AKS_CLUSTER_NAME
+
+kubectl get nodes
+
+########################## get and create namespace(s)  ########################
+
+kubectl get namespace
+
+kubectl create namespace ratingsapp
+
+kubectl get namespace
