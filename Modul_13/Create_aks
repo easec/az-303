@@ -129,3 +129,5 @@ kubectl delete svc my-app
 ########################## destroy cluster  ########################
 
 az aks delete --name $AKS_CLUSTER_NAME --resource-group $RESOURCE_GROUP
+
+az group delete --name $RESOURCE_GROUP
