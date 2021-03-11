@@ -122,7 +122,7 @@ kubectl scale deployment my-app --replicas=1
 
 ########################## clean up  ########################
 
-kubectl delete deployment min-app
+kubectl delete deployment my-app
 
 kubectl delete svc min-app
 
