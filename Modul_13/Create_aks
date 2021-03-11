@@ -78,6 +78,12 @@ az aks get-credentials \
 
 kubectl get nodes
 
+########################## get all running pods  ########################
+
+kubectl get pods --all-namespaces
+
+Kindly note that at these moment it´s only pods for aks that´s running
+
 ########################## get and create namespace(s)  ########################
 
 kubectl get namespace
@@ -85,3 +91,41 @@ kubectl get namespace
 kubectl create namespace ratingsapp
 
 kubectl get namespace
+
+########################## deploy deployment   ########################
+
+kubectl create deployment my-app --image=easec/php-webb
+
+########################## expose deployment to Internet  ########################
+
+kubectl expose deployment my-app --port 80 --type LoadBalancer
+
+########################## get public ip address  ########################
+
+kubectl get svc
+
+Kindly note the public ip address, you could use web browser to connect to app through this ip address
+
+########################## scale up the deployment  ########################
+
+kubectl scale deployment my-app --replicas=8
+
+kubectl get pods -o wide
+
+########################## describe deployment  ########################
+
+kubectl describe deployment my-app
+
+########################## scale down the deployment  ########################
+
+kubectl scale deployment my-app --replicas=1
+
+########################## clean up  ########################
+
+kubectl delete deployment min-app
+
+kubectl delete svc min-app
+
+########################## destroy cluster  ########################
+
+az aks delete --name $AKS_CLUSTER_NAME --resource-group $RESOURCE_GROUP
