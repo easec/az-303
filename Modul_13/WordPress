@@ -7,7 +7,7 @@ git   https://git-scm.com/download/win
 
 Please note: You need to set your own name for app and MySQL. Also kindly note that SKU for MySQL maybe not is available in your region or location.
 
-You could do the whole set up in console for git.
+You could do the whole set up in Windows PowerShell or console for git.
 
 Remember: 
 
