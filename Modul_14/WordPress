@@ -14,11 +14,6 @@ you have already mastered, you will never grow"
 – Ralph Waldo Emerson, 1803-1882, författare & filosof
 
 
-################################# create directory for project and change to that directory  #####################################
-
-mkdir wordpress
-
-cd wordpress
 
 ################################# clone repository and change directory  #####################################
 
