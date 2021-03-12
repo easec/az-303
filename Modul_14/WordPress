@@ -33,7 +33,7 @@ az group create --name wordpressrg --location northeurope
 
 az appservice plan create --name wpAppServicePlan --resource-group wordpressrg --sku S1 --is-linux
 
-################################# create App Service plan  #####################################
+################################# create webapp  #####################################
 
 az webapp create --resource-group wordpressrg --plan wpAppServicePlan --name wpazureeasec --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
 
